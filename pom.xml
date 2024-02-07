@@ -102,35 +102,6 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			<!-- Plugin para generar código a partir de OpenAPI 3.0.0 -->
-			<plugin>
-				<groupId>io.swagger.codegen.v3</groupId>
-				<artifactId>swagger-codegen-maven-plugin</artifactId>
-				<version>3.0.35</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<inputSpec>${project.basedir}/src/main/resources/openapi.yml</inputSpec>
-							<language>java</language>
-							<configOptions>
-								<sourceFolder>src/gen/main/java</sourceFolder>
-								<interfaceOnly>true</interfaceOnly>
-								<dateLibrary>java8</dateLibrary>
-								<generateApi>false</generateApi>
-								<generateModel>false</generateModel>
-							</configOptions>
-							<library>resttemplate</library>
-							<modelPackage>com.digitalservice.printhub.codegen.rest.model</modelPackage>
-							<apiPackage>com.digitalservice.printhub.codegen.rest.api</apiPackage>
-							<invokerPackage>com.digitalservice.printhub.codegen.rest.invoker</invokerPackage>
-							<generateApiTests>false</generateApiTests>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
 				<groupId>org.openapitools</groupId>
 				<artifactId>openapi-generator-maven-plugin</artifactId>
@@ -150,6 +121,7 @@
 							<supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
 							<configOptions>
 								<delegatePattern>true</delegatePattern>
+								<generateApiClients>false</generateApiClients>
 							</configOptions>
 						</configuration>
 					</execution>
