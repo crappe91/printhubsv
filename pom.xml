@@ -116,8 +116,8 @@
 						<configuration>
 							<inputSpec>${project.basedir}/src/main/resources/openapi.yml</inputSpec>
 							<generatorName>spring</generatorName>
-							<apiPackage>io.reflectoring.api</apiPackage>
-							<modelPackage>io.reflectoring.model</modelPackage>
+							<apiPackage>com.digitalservice.api</apiPackage>
+							<modelPackage>com.digitalservice.model</modelPackage>
 							<supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
 							<configOptions>
 								<delegatePattern>true</delegatePattern>
