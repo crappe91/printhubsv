@@ -45,11 +45,11 @@
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.2.0</version>
 		</dependency>
-		<dependency>
-			<groupId>io.swagger.codegen.v3</groupId>
-			<artifactId>swagger-codegen-maven-plugin</artifactId>
-			<version>3.0.35</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>io.swagger.codegen.v3</groupId>-->
+<!--			<artifactId>swagger-codegen-maven-plugin</artifactId>-->
+<!--			<version>3.0.35</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
@@ -116,13 +116,15 @@
 						<configuration>
 							<inputSpec>${project.basedir}/src/main/resources/openapi.yml</inputSpec>
 							<generatorName>spring</generatorName>
-							<apiPackage>com.digitalservice.api</apiPackage>
-							<modelPackage>com.digitalservice.model</modelPackage>
-							<supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
 							<configOptions>
 								<delegatePattern>true</delegatePattern>
 								<generateApiClients>false</generateApiClients>
+								<interfaceOnly>true</interfaceOnly>
 							</configOptions>
+<!--							<packageName>com.digitalservice.printhub</packageName>-->
+							<apiPackage>com.digitalservice.api</apiPackage>
+							<modelPackage>com.digitalservice.model</modelPackage>
+							<supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
 						</configuration>
 					</execution>
 				</executions>
