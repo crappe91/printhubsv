@@ -15,16 +15,16 @@
 	<description>Demo printhub</description>
 	<properties>
 		<java.version>17</java.version>
+		<openapi-generator-version>5.3.0</openapi-generator-version>
+		<openapi-spec-path>src/main/resources/openapi.yaml</openapi-spec-path>
+		<generated-sources-path>${project.build.directory}/generated-sources/openapi</generated-sources-path>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -41,10 +41,51 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.2.0</version>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>io.swagger.codegen.v3</groupId>-->
+<!--			<artifactId>swagger-codegen-maven-plugin</artifactId>-->
+<!--			<version>3.0.35</version>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.openapitools/openapi-generator-maven-plugin -->
+		<dependency>
+			<groupId>org.openapitools</groupId>
+			<artifactId>openapi-generator-maven-plugin</artifactId>
+			<version>6.6.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations -->
+		<dependency>
+			<groupId>io.swagger.core.v3</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>2.2.20</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.openapitools/jackson-databind-nullable -->
+		<dependency>
+			<groupId>org.openapitools</groupId>
+			<artifactId>jackson-databind-nullable</artifactId>
+			<version>0.2.6</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -61,7 +102,35 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.openapitools</groupId>
+				<artifactId>openapi-generator-maven-plugin</artifactId>
+				<!-- RELEASE_VERSION -->
+				<version>6.6.0</version>
+				<!-- /RELEASE_VERSION -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/openapi.yml</inputSpec>
+							<generatorName>spring</generatorName>
+							<configOptions>
+								<delegatePattern>true</delegatePattern>
+								<generateApiClients>false</generateApiClients>
+								<interfaceOnly>true</interfaceOnly>
+							</configOptions>
+<!--							<packageName>com.digitalservice.printhub</packageName>-->
+							<apiPackage>com.digitalservice.api</apiPackage>
+							<modelPackage>com.digitalservice.model</modelPackage>
+							<supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
